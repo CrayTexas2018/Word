@@ -1,0 +1,6 @@
+framework module Pods_WordPuzzle {
+  umbrella header "Pods-WordPuzzle-umbrella.h"
+
+  export *
+  module * { export * }
+}
