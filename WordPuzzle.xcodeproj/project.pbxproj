@@ -10,8 +10,10 @@
 		278099359D925DB10212CC06 /* Pods_WordPuzzleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB08F7ACCAF760095B1EA9BA /* Pods_WordPuzzleUITests.framework */; };
 		55C2FB0F83D4BD1F1B248D3F /* Pods_WordPuzzleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9234F48EB696BCDC310A94A3 /* Pods_WordPuzzleTests.framework */; };
 		837683B2F011C362BA37772D /* Pods_WordPuzzle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69102F807F7D835B7E9CE /* Pods_WordPuzzle.framework */; };
+		AB225A8820C49DA00009F411 /* PuzzleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB225A8720C49DA00009F411 /* PuzzleViewController.swift */; };
+		AB225A8B20C4A0FC0009F411 /* PuzzleSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB225A8A20C4A0FC0009F411 /* PuzzleSelectViewController.swift */; };
+		AB225A8D20C4A5430009F411 /* PackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB225A8C20C4A5430009F411 /* PackViewController.swift */; };
 		AB4AB75C20C39BF30023B63C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AB75B20C39BF30023B63C /* AppDelegate.swift */; };
-		AB4AB75E20C39BF30023B63C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AB75D20C39BF30023B63C /* ViewController.swift */; };
 		AB4AB76120C39BF30023B63C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4AB75F20C39BF30023B63C /* Main.storyboard */; };
 		AB4AB76320C39BF30023B63C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB4AB76220C39BF30023B63C /* Assets.xcassets */; };
 		AB4AB76620C39BF30023B63C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4AB76420C39BF30023B63C /* LaunchScreen.storyboard */; };
@@ -49,9 +51,11 @@
 		88038E008881F787E59AA790 /* Pods-WordPuzzle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordPuzzle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WordPuzzle/Pods-WordPuzzle.debug.xcconfig"; sourceTree = "<group>"; };
 		9234F48EB696BCDC310A94A3 /* Pods_WordPuzzleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordPuzzleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB08F7ACCAF760095B1EA9BA /* Pods_WordPuzzleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordPuzzleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB225A8720C49DA00009F411 /* PuzzleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PuzzleViewController.swift; path = /Users/crayjaeger/Desktop/Words/WordPuzzle/WordPuzzle/ViewControllers/PuzzleViewController.swift; sourceTree = "<absolute>"; };
+		AB225A8A20C4A0FC0009F411 /* PuzzleSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleSelectViewController.swift; sourceTree = "<group>"; };
+		AB225A8C20C4A5430009F411 /* PackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackViewController.swift; sourceTree = "<group>"; };
 		AB4AB75820C39BF30023B63C /* WordPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB4AB75B20C39BF30023B63C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AB4AB75D20C39BF30023B63C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AB4AB76020C39BF30023B63C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB4AB76220C39BF30023B63C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB4AB76520C39BF30023B63C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -107,6 +111,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AB225A8920C49DB70009F411 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				AB4AB78D20C39D840023B63C /* Puzzle.swift */,
+				AB4AB78F20C3C69A0023B63C /* Tile.swift */,
+				AB4AB79120C3C7060023B63C /* Solution.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		AB225A8E20C4A60E0009F411 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB225A8C20C4A5430009F411 /* PackViewController.swift */,
+				AB225A8720C49DA00009F411 /* PuzzleViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		AB4AB74F20C39BF30023B63C = {
 			isa = PBXGroup;
 			children = (
@@ -132,16 +155,15 @@
 		AB4AB75A20C39BF30023B63C /* WordPuzzle */ = {
 			isa = PBXGroup;
 			children = (
+				AB225A8E20C4A60E0009F411 /* ViewControllers */,
 				AB4AB75B20C39BF30023B63C /* AppDelegate.swift */,
-				AB4AB75D20C39BF30023B63C /* ViewController.swift */,
 				AB4AB75F20C39BF30023B63C /* Main.storyboard */,
+				AB225A8A20C4A0FC0009F411 /* PuzzleSelectViewController.swift */,
 				AB4AB76220C39BF30023B63C /* Assets.xcassets */,
 				AB4AB76420C39BF30023B63C /* LaunchScreen.storyboard */,
 				AB4AB76720C39BF30023B63C /* Info.plist */,
-				AB4AB78D20C39D840023B63C /* Puzzle.swift */,
-				AB4AB78F20C3C69A0023B63C /* Tile.swift */,
-				AB4AB79120C3C7060023B63C /* Solution.swift */,
 				AB4AB79920C3E2B90023B63C /* WebRequest.swift */,
+				AB225A8920C49DB70009F411 /* Components */,
 			);
 			path = WordPuzzle;
 			sourceTree = "<group>";
@@ -390,10 +412,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB225A8B20C4A0FC0009F411 /* PuzzleSelectViewController.swift in Sources */,
 				AB4AB79B20C3E2B90023B63C /* WebRequest.swift in Sources */,
+				AB225A8D20C4A5430009F411 /* PackViewController.swift in Sources */,
 				AB4AB79220C3C7060023B63C /* Solution.swift in Sources */,
+				AB225A8820C49DA00009F411 /* PuzzleViewController.swift in Sources */,
 				AB4AB78E20C39D840023B63C /* Puzzle.swift in Sources */,
-				AB4AB75E20C39BF30023B63C /* ViewController.swift in Sources */,
 				AB4AB75C20C39BF30023B63C /* AppDelegate.swift in Sources */,
 				AB4AB79020C3C69A0023B63C /* Tile.swift in Sources */,
 			);

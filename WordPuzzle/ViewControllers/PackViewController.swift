@@ -1,22 +1,21 @@
 //
-//  ViewController.swift
+//  PackViewController.swift
 //  WordPuzzle
 //
-//  Created by Cray Jaeger on 6/2/18.
+//  Created by Cray Jaeger on 6/3/18.
 //  Copyright © 2018 Cray Jaeger. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class PackViewController: UIViewController {
     
-    //MARK Properties
-    @IBOutlet weak var TestButton: UIButton!
-    
+    @IBOutlet weak var testButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
 
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,6 +27,4 @@ class ViewController: UIViewController {
         let vc = storyboard?.instantiateViewController(withIdentifier: "secondVC") as? PuzzleSelectViewController
         navigationController?.pushViewController(vc!, animated: true)
     }
-    
 }
-
