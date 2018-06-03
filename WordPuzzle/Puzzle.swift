@@ -34,6 +34,7 @@ public struct Puzzle
     public func getPuzzleTiles(puzzle: Puzzle) -> [Tile]
     {
         return puzzle.tiles
+        //asf
     }
 }
 
