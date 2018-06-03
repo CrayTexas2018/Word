@@ -125,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				AB225A8C20C4A5430009F411 /* PackViewController.swift */,
+				AB225A8A20C4A0FC0009F411 /* PuzzleSelectViewController.swift */,
 				AB225A8720C49DA00009F411 /* PuzzleViewController.swift */,
 			);
 			path = ViewControllers;
@@ -158,7 +159,6 @@
 				AB225A8E20C4A60E0009F411 /* ViewControllers */,
 				AB4AB75B20C39BF30023B63C /* AppDelegate.swift */,
 				AB4AB75F20C39BF30023B63C /* Main.storyboard */,
-				AB225A8A20C4A0FC0009F411 /* PuzzleSelectViewController.swift */,
 				AB4AB76220C39BF30023B63C /* Assets.xcassets */,
 				AB4AB76420C39BF30023B63C /* LaunchScreen.storyboard */,
 				AB4AB76720C39BF30023B63C /* Info.plist */,
