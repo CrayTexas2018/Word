@@ -10,9 +10,9 @@ import Foundation
 
 public struct Solution
 {
-    var solution_id : Int
-    var solution_text : String
-    var solution_hint: String
+    let solution_id : Int
+    let solution_text : String
+    let solution_hint: String
     
     init(solution_id : Int, solution_text: String, solution_hint: String)
     {

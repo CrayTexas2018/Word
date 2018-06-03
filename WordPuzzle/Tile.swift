@@ -10,8 +10,8 @@ import Foundation
 
 public struct Tile
 {
-    var tile_id: Int
-    var tile_text: String
+    let tile_id: Int
+    let tile_text: String
     var is_selectable: Bool
     
     init(tile_id: Int, tile_text: String, is_selectable: Bool = true)

@@ -10,15 +10,17 @@ import Foundation
 
 public struct Puzzle
 {
-    var puzzle_id: Int
-    var solutions: [Solution]
-    var tiles: [Tile]
+    let puzzle_id: Int
+    let solutions: [Solution]
+    let tiles: [Tile]
+    let content_id: Int
     
-    init(puzzle_id: Int, solutions: [Solution], tiles: [Tile])
+    init(puzzle_id: Int, solutions: [Solution], tiles: [Tile], content_id: Int = 1)
     {
         self.puzzle_id = puzzle_id
         self.solutions = solutions
         self.tiles = tiles
+        self.content_id = content_id
     }
     
     public func getPuzzleId(puzzle: Puzzle) -> Int
@@ -34,7 +36,6 @@ public struct Puzzle
     public func getPuzzleTiles(puzzle: Puzzle) -> [Tile]
     {
         return puzzle.tiles
-        //asf
     }
 }
 
