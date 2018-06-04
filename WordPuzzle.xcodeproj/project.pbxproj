@@ -19,8 +19,6 @@
 		AB4AB76120C39BF30023B63C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4AB75F20C39BF30023B63C /* Main.storyboard */; };
 		AB4AB76320C39BF30023B63C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB4AB76220C39BF30023B63C /* Assets.xcassets */; };
 		AB4AB76620C39BF30023B63C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4AB76420C39BF30023B63C /* LaunchScreen.storyboard */; };
-		AB4AB77120C39BF30023B63C /* WordPuzzleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AB77020C39BF30023B63C /* WordPuzzleTests.swift */; };
-		AB4AB77C20C39BF30023B63C /* WordPuzzleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AB77B20C39BF30023B63C /* WordPuzzleUITests.swift */; };
 		AB4AB78E20C39D840023B63C /* Puzzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AB78D20C39D840023B63C /* Puzzle.swift */; };
 		AB4AB79020C3C69A0023B63C /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AB78F20C3C69A0023B63C /* Tile.swift */; };
 		AB4AB79220C3C7060023B63C /* Solution.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AB79120C3C7060023B63C /* Solution.swift */; };
@@ -65,11 +63,7 @@
 		AB4AB76520C39BF30023B63C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB4AB76720C39BF30023B63C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB4AB76C20C39BF30023B63C /* WordPuzzleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordPuzzleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB4AB77020C39BF30023B63C /* WordPuzzleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPuzzleTests.swift; sourceTree = "<group>"; };
-		AB4AB77220C39BF30023B63C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB4AB77720C39BF30023B63C /* WordPuzzleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordPuzzleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB4AB77B20C39BF30023B63C /* WordPuzzleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPuzzleUITests.swift; sourceTree = "<group>"; };
-		AB4AB77D20C39BF30023B63C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB4AB78D20C39D840023B63C /* Puzzle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puzzle.swift; sourceTree = "<group>"; };
 		AB4AB78F20C3C69A0023B63C /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		AB4AB79120C3C7060023B63C /* Solution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solution.swift; sourceTree = "<group>"; };
@@ -148,8 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				AB4AB75A20C39BF30023B63C /* WordPuzzle */,
-				AB4AB76F20C39BF30023B63C /* WordPuzzleTests */,
-				AB4AB77A20C39BF30023B63C /* WordPuzzleUITests */,
 				AB4AB75920C39BF30023B63C /* Products */,
 				EC7EA1B87AFE8396F7A18241 /* Pods */,
 				9A059E28781C129AE8CE4D4B /* Frameworks */,
@@ -180,24 +172,6 @@
 				AB225A9320C5E2EE0009F411 /* Utilities */,
 			);
 			path = WordPuzzle;
-			sourceTree = "<group>";
-		};
-		AB4AB76F20C39BF30023B63C /* WordPuzzleTests */ = {
-			isa = PBXGroup;
-			children = (
-				AB4AB77020C39BF30023B63C /* WordPuzzleTests.swift */,
-				AB4AB77220C39BF30023B63C /* Info.plist */,
-			);
-			path = WordPuzzleTests;
-			sourceTree = "<group>";
-		};
-		AB4AB77A20C39BF30023B63C /* WordPuzzleUITests */ = {
-			isa = PBXGroup;
-			children = (
-				AB4AB77B20C39BF30023B63C /* WordPuzzleUITests.swift */,
-				AB4AB77D20C39BF30023B63C /* Info.plist */,
-			);
-			path = WordPuzzleUITests;
 			sourceTree = "<group>";
 		};
 		EC7EA1B87AFE8396F7A18241 /* Pods */ = {
@@ -443,7 +417,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB4AB77120C39BF30023B63C /* WordPuzzleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,7 +424,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB4AB77C20C39BF30023B63C /* WordPuzzleUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
