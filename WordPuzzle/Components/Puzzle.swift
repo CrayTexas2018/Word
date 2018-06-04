@@ -12,7 +12,7 @@ public struct Puzzle
 {
     let puzzle_id: Int
     let puzzle_name: String
-    let solutions: [Solution]
+    var solutions: [Solution]
     let tiles: [Tile]
     let content_id: Int
     

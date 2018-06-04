@@ -11,14 +11,16 @@ import Foundation
 public struct Solution
 {
     let solution_id : Int
-    let solution_text : String
+    var solution_text : String
     let solution_hint: String
+    var solution_solved: Bool
     
-    init(solution_id : Int, solution_text: String, solution_hint: String)
+    init(solution_id : Int, solution_text: String, solution_hint: String, solution_solved: Bool = false)
     {
         self.solution_id = solution_id
         self.solution_text = solution_text
         self.solution_hint = solution_hint
+        self.solution_solved = solution_solved
     }
     
     public func getSolutionId(solution: Solution) -> Int
@@ -41,12 +43,18 @@ public class SolutionRepo
 {
     public func getSolutions(puzzle_id: Int) -> [Solution]
     {
-        let s1 = getSolution(solution_id: 1)
-        let s2 = getSolution(solution_id: 2)
-        let s3 = getSolution(solution_id: 2)
-        let s4 = getSolution(solution_id: 2)
-        let s5 = getSolution(solution_id: 2)
-        let s6 = getSolution(solution_id: 2)
+        var s1 = getSolution(solution_id: 1)
+        var s2 = getSolution(solution_id: 2)
+        var s3 = getSolution(solution_id: 3)
+        var s4 = getSolution(solution_id: 4)
+        var s5 = getSolution(solution_id: 5)
+        var s6 = getSolution(solution_id: 6)
+        
+        s2.solution_text = "apple"
+        s3.solution_text = "headphones"
+        s4.solution_text = "keyboard"
+        s5.solution_text = "water"
+        s6.solution_text = "fajitas"
         
         return [s1, s2, s3, s4, s5, s6]
     }

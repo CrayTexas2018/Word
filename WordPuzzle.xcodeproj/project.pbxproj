@@ -14,6 +14,7 @@
 		AB225A8B20C4A0FC0009F411 /* PuzzleSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB225A8A20C4A0FC0009F411 /* PuzzleSelectViewController.swift */; };
 		AB225A8D20C4A5430009F411 /* PackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB225A8C20C4A5430009F411 /* PackViewController.swift */; };
 		AB225A9020C4B7990009F411 /* PuzzleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB225A8F20C4B7990009F411 /* PuzzleCell.swift */; };
+		AB225A9220C51C210009F411 /* SolutionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB225A9120C51C210009F411 /* SolutionCell.swift */; };
 		AB4AB75C20C39BF30023B63C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AB75B20C39BF30023B63C /* AppDelegate.swift */; };
 		AB4AB76120C39BF30023B63C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4AB75F20C39BF30023B63C /* Main.storyboard */; };
 		AB4AB76320C39BF30023B63C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB4AB76220C39BF30023B63C /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		AB225A8A20C4A0FC0009F411 /* PuzzleSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleSelectViewController.swift; sourceTree = "<group>"; };
 		AB225A8C20C4A5430009F411 /* PackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackViewController.swift; sourceTree = "<group>"; };
 		AB225A8F20C4B7990009F411 /* PuzzleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleCell.swift; sourceTree = "<group>"; };
+		AB225A9120C51C210009F411 /* SolutionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolutionCell.swift; sourceTree = "<group>"; };
 		AB4AB75820C39BF30023B63C /* WordPuzzle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordPuzzle.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB4AB75B20C39BF30023B63C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB4AB76020C39BF30023B63C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -117,8 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				AB4AB78D20C39D840023B63C /* Puzzle.swift */,
-				AB4AB78F20C3C69A0023B63C /* Tile.swift */,
 				AB4AB79120C3C7060023B63C /* Solution.swift */,
+				AB4AB78F20C3C69A0023B63C /* Tile.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -130,6 +132,7 @@
 				AB225A8A20C4A0FC0009F411 /* PuzzleSelectViewController.swift */,
 				AB225A8720C49DA00009F411 /* PuzzleViewController.swift */,
 				AB225A8F20C4B7990009F411 /* PuzzleCell.swift */,
+				AB225A9120C51C210009F411 /* SolutionCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				AB225A9020C4B7990009F411 /* PuzzleCell.swift in Sources */,
 				AB4AB79220C3C7060023B63C /* Solution.swift in Sources */,
 				AB225A8820C49DA00009F411 /* PuzzleViewController.swift in Sources */,
+				AB225A9220C51C210009F411 /* SolutionCell.swift in Sources */,
 				AB4AB78E20C39D840023B63C /* Puzzle.swift in Sources */,
 				AB4AB75C20C39BF30023B63C /* AppDelegate.swift in Sources */,
 				AB4AB79020C3C69A0023B63C /* Tile.swift in Sources */,

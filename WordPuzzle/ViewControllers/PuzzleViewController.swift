@@ -7,13 +7,20 @@
 
 import UIKit
 
-class PuzzleViewController: UIViewController {
+class PuzzleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var puzzleId : Int = 0
+    @IBOutlet weak var textArea: UITextField!
+    @IBOutlet weak var clearButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var hintTable: UITableView!
+    
+    var puzzleId: Int = 0
+    var puzzle: Puzzle = Puzzle(puzzle_id: 0, puzzle_name: "Error", solutions: [], tiles: [])
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // Set width of text area
+        //setTextFieldWidth()
         // Load Puzzle
         let puzzle: Puzzle = loadPuzzle(puzzleId: puzzleId)
         // Load Hints
@@ -126,9 +133,78 @@ class PuzzleViewController: UIViewController {
         }
     }
     
+    private func setTextFieldWidth()
+    {
+        let screenWidth: CGFloat = self.view.frame.size.width
+        let clearButtonWidth: CGFloat = clearButton.frame.size.width
+        let submitButtonWidth: CGFloat = submitButton.frame.size.width
+        let margin: CGFloat = 8
+        textArea.frame.size.width = screenWidth - clearButtonWidth - submitButtonWidth - margin
+        print(textArea.frame.size.width)
+    }
+    
     @objc func buttonAction(_ sender:UIButton!)
     {
-        print("Button tapped")
+        let currentText: String! = textArea.text
+        let buttonText: String! = sender.currentTitle
+        textArea.text = currentText + buttonText
+        sender.isEnabled = false
+    }
+    @IBAction func clearButtonPressed(_ sender: UIButton) {
+        textArea.text = ""
+    }
+    
+    @IBAction func submitButtonPressed(_ sender: UIButton) {
+        //var puzzle = loadPuzzle(puzzleId: puzzleId)
+        // See if text area text = solution
+        let userText = textArea.text
+        
+        var i = 0
+        for solution in puzzle.solutions {
+            if (userText == solution.getSolutionText(solution: solution))
+            {
+                // Mark the solution
+                puzzle.solutions[i].solution_solved = true
+                // Record the tiles used (for release)
+                
+                // Clear the text field
+                textArea.text = ""
+            }
+            else
+            {
+                print("Wrong!")
+            }
+            i += 1
+        }
+        
+        hintTable.reloadData()
+        
+    }
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return puzzle.solutions.count
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SolutionCell") as! SolutionCell
+        cell.hintLabel.text = puzzle.solutions[indexPath.row].getSolutionHint(solution: puzzle.solutions[indexPath.row])
+        cell.solutionLabel.text = puzzle.solutions[indexPath.row].getSolutionText(solution: puzzle.solutions[indexPath.row])
+        cell.releaseButton.tag = puzzle.solutions[indexPath.row].getSolutionId(solution: puzzle.solutions[indexPath.row])
+        cell.releaseButton.addTarget(self, action: #selector(self.releaseSolution), for: .touchUpInside)
+        
+        if (puzzle.solutions[indexPath.row].solution_solved)
+        {
+            cell.solutionLabel.textColor = UIColor.red
+        }
+        
+        return cell
+    }
+    
+    @objc func releaseSolution(sender:UIButton)
+    {
+     print("Button Pressed")
     }
 }
 

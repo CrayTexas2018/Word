@@ -31,9 +31,11 @@ class PuzzleSelectViewController: UIViewController, UITableViewDelegate, UITable
     
     @objc func beginPuzzle(sender:UIButton)
     {
+        let puzzleRepo = PuzzleRepo()
         // When the cell button is hit, navigate to new page
         let vc = storyboard?.instantiateViewController(withIdentifier: "Play_Puzzle") as? PuzzleViewController
         vc?.puzzleId = sender.tag
+        vc?.puzzle = puzzleRepo.getPuzzle(puzzle_id: sender.tag)
         navigationController?.pushViewController(vc!, animated: true)
     }
     
