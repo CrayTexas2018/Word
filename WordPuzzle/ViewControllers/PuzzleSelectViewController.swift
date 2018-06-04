@@ -24,8 +24,16 @@ class PuzzleSelectViewController: UIViewController, UITableViewDelegate, UITable
         cell.PuzzleNameLabel.text = puzzleList[indexPath.row]
         cell.PuzzleDifficultyLabel.text = "Easy"
         cell.puzzleId = (indexPath.row + 1);
+        cell.PuzzlePlayButton.addTarget(self, action: #selector(self.beginPuzzle), for: .touchUpInside)
         
         return cell
+    }
+    
+    @objc private func beginPuzzle()
+    {
+        // When the cell button is hit, navigate to new page
+        let vc = storyboard?.instantiateViewController(withIdentifier: "Play_Puzzle") as? PuzzleViewController
+        navigationController?.pushViewController(vc!, animated: true)
     }
     
     override func viewDidLoad() {

@@ -60,7 +60,7 @@
         <!--Select Puzzle-->
         <scene sceneID="GAF-ii-YFD">
             <objects>
-                <viewController storyboardIdentifier="secondVC" title="Select Puzzle" id="UBG-oQ-kOT" customClass="PuzzleSelectViewController" customModule="WordPuzzle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Select_Puzzle" title="Select Puzzle" id="UBG-oQ-kOT" customClass="PuzzleSelectViewController" customModule="WordPuzzle" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c8E-lC-mKx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -141,10 +141,28 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0jO-Bm-BeJ"/>
                     </view>
+                    <connections>
+                        <segue destination="fYf-1a-SjQ" kind="show" id="ztv-m5-A3x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHZ-Ta-3pJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1528.8" y="-54.422788605697157"/>
+        </scene>
+        <!--Puzzle-->
+        <scene sceneID="oRi-sO-cYC">
+            <objects>
+                <viewController storyboardIdentifier="Play_Puzzle" title="Puzzle" id="fYf-1a-SjQ" customClass="PuzzleViewController" customModule="WordPuzzle" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KBe-3y-EwX" customClass="Puzzle">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="m8j-Mp-nt6"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Rd-aP-2vI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2322" y="-54"/>
         </scene>
     </scenes>
 </document>

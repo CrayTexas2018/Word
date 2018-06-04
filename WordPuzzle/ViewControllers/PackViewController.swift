@@ -24,7 +24,7 @@ class PackViewController: UIViewController {
     }
     
     @IBAction func TestButtonPressed(_ sender: UIButton) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "secondVC") as? PuzzleSelectViewController
+        let vc = storyboard?.instantiateViewController(withIdentifier: "Select_Puzzle") as? PuzzleSelectViewController
         vc?.pack_id = 123
         navigationController?.pushViewController(vc!, animated: true)
     }
