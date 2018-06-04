@@ -16,21 +16,18 @@ class PuzzleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var puzzleId: Int = 0
     var puzzle: Puzzle = Puzzle(puzzle_id: 0, puzzle_name: "Error", solutions: [], tiles: [])
+    var tileSequence: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set width of text area
         //setTextFieldWidth()
         // Load Puzzle
-        let puzzle: Puzzle = loadPuzzle(puzzleId: puzzleId)
-        // Load Hints
-        let hints = loadHints(solutions: puzzle.solutions)
-        // Load Solutions
-        let solutions = loadSolutions(solutions: puzzle.solutions)
+        puzzle = loadPuzzle(puzzleId: puzzleId)
         // Load Tiles
-        let tiles = loadTiles(solutions: puzzle.solutions)
+        puzzle.tiles = loadTiles(solutions: puzzle.solutions)
         // Draw Tiles
-        drawTiles(tiles: tiles)
+        drawTiles(tiles: puzzle.tiles)
     }
     
     private func loadPuzzle(puzzleId: Int) -> Puzzle
@@ -39,29 +36,10 @@ class PuzzleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return puzzleRepo.getPuzzle(puzzle_id: puzzleId)
     }
     
-    private func loadHints(solutions: [Solution]) -> [String]
-    {
-        var hintsList: [String] = []
-        for solution in solutions {
-            hintsList.append(solution.getSolutionHint(solution: solution))
-        }
-        
-        return hintsList
-    }
-    
-    private func loadSolutions(solutions: [Solution]) -> [String]
-    {
-        var solutionList: [String] = []
-        for solution in solutions {
-            solutionList.append(solution.getSolutionText(solution: solution))
-        }
-        
-        return solutionList;
-    }
-    
     private func loadTiles(solutions: [Solution]) -> [Tile]
     {
         var tileList : [Tile] = []
+        var tileId = 1
         for solution in solutions {
             // Take solution and substring a random 1-3 letter until there are no more letters
             var s = Array(solution.getSolutionText(solution: solution))
@@ -82,7 +60,8 @@ class PuzzleViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         s.remove(at: 0)
                     }
                 }
-                tileList.append(Tile(tile_id: 1, tile_text: text, is_selectable: true))
+                tileList.append(Tile(tile_id: tileId, tile_text: text, is_selectable: true))
+                tileId += 1
             }
         }
         return tileList
@@ -124,6 +103,7 @@ class PuzzleViewController: UIViewController, UITableViewDelegate, UITableViewDa
             button.backgroundColor = UIColor.lightGray
             button.setTitle(tile.getTileText(tile: tile), for: UIControlState.normal)
             button.tintColor = UIColor.black
+            button.tag = tile.getTileId(tile: tile)
             button.addTarget(self, action: #selector(PuzzleViewController.buttonAction(_:)), for: .touchUpInside)
             
             self.view.addSubview(button)
@@ -133,24 +113,16 @@ class PuzzleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    private func setTextFieldWidth()
-    {
-        let screenWidth: CGFloat = self.view.frame.size.width
-        let clearButtonWidth: CGFloat = clearButton.frame.size.width
-        let submitButtonWidth: CGFloat = submitButton.frame.size.width
-        let margin: CGFloat = 8
-        textArea.frame.size.width = screenWidth - clearButtonWidth - submitButtonWidth - margin
-        print(textArea.frame.size.width)
-    }
-    
     @objc func buttonAction(_ sender:UIButton!)
     {
         let currentText: String! = textArea.text
         let buttonText: String! = sender.currentTitle
         textArea.text = currentText + buttonText
         sender.isEnabled = false
+        tileSequence.append(sender.tag)
     }
     @IBAction func clearButtonPressed(_ sender: UIButton) {
+        releaseTiles(puzzle: puzzle, tileSequence: tileSequence)
         textArea.text = ""
     }
     
@@ -166,7 +138,9 @@ class PuzzleViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 // Mark the solution
                 puzzle.solutions[i].solution_solved = true
                 // Record the tiles used (for release)
-                
+                puzzle.solutions[i].tile_sequence = tileSequence
+                //Reset tile sequence
+                tileSequence.removeAll()
                 // Clear the text field
                 textArea.text = ""
             }
@@ -191,12 +165,16 @@ class PuzzleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "SolutionCell") as! SolutionCell
         cell.hintLabel.text = puzzle.solutions[indexPath.row].getSolutionHint(solution: puzzle.solutions[indexPath.row])
         cell.solutionLabel.text = puzzle.solutions[indexPath.row].getSolutionText(solution: puzzle.solutions[indexPath.row])
-        cell.releaseButton.tag = puzzle.solutions[indexPath.row].getSolutionId(solution: puzzle.solutions[indexPath.row])
+        cell.releaseButton.tag = puzzle.solutions[indexPath.row].getSolutionId(solution: puzzle.solutions[indexPath.row]) + 100
         cell.releaseButton.addTarget(self, action: #selector(self.releaseSolution), for: .touchUpInside)
         
         if (puzzle.solutions[indexPath.row].solution_solved)
         {
             cell.solutionLabel.textColor = UIColor.red
+        }
+        else
+        {
+            cell.solutionLabel.textColor = UIColor.green
         }
         
         return cell
@@ -204,7 +182,24 @@ class PuzzleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @objc func releaseSolution(sender:UIButton)
     {
-     print("Button Pressed")
+        releaseTiles(puzzle: puzzle, tileSequence: puzzle.solutions[sender.tag - 101].tile_sequence)
+        puzzle.solutions[sender.tag - 101].tile_sequence.removeAll()
+        puzzle.solutions[sender.tag - 101].solution_solved = false
+        hintTable.reloadData()
+        print("Button Pressed")
+    }
+    
+    private func releaseTiles(puzzle: Puzzle, tileSequence: [Int])
+    {
+        for tile in puzzle.tiles {
+            if tileSequence.contains(tile.getTileId(tile: tile))
+            {
+                if let button = self.view.viewWithTag(tile.getTileId(tile: tile)) as? UIButton
+                {
+                    button.isEnabled = true
+                }
+            }
+        }
     }
 }
 

@@ -14,13 +14,15 @@ public struct Solution
     var solution_text : String
     let solution_hint: String
     var solution_solved: Bool
+    var tile_sequence: [Int]
     
-    init(solution_id : Int, solution_text: String, solution_hint: String, solution_solved: Bool = false)
+    init(solution_id : Int, solution_text: String, solution_hint: String, solution_solved: Bool = false, tile_sequence: [Int] = [])
     {
         self.solution_id = solution_id
         self.solution_text = solution_text
         self.solution_hint = solution_hint
         self.solution_solved = solution_solved
+        self.tile_sequence = tile_sequence
     }
     
     public func getSolutionId(solution: Solution) -> Int

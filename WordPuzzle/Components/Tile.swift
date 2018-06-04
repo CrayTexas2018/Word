@@ -12,13 +12,15 @@ public struct Tile
 {
     let tile_id: Int
     let tile_text: String
+    let tile_tag: Int
     var is_selectable: Bool
     
-    init(tile_id: Int, tile_text: String, is_selectable: Bool = true)
+    init(tile_id: Int, tile_text: String, is_selectable: Bool = true, tile_tag: Int = 0)
     {
         self.tile_id = tile_id
         self.tile_text = tile_text
         self.is_selectable = is_selectable
+        self.tile_tag = tile_tag
     }
     
     public func getTileId(tile: Tile) -> Int
