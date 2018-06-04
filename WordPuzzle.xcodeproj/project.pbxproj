@@ -137,6 +137,13 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		AB225A9320C5E2EE0009F411 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		AB4AB74F20C39BF30023B63C = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +177,7 @@
 				AB4AB79920C3E2B90023B63C /* WebRequest.swift */,
 				AB225A8E20C4A60E0009F411 /* ViewControllers */,
 				AB225A8920C49DB70009F411 /* Components */,
+				AB225A9320C5E2EE0009F411 /* Utilities */,
 			);
 			path = WordPuzzle;
 			sourceTree = "<group>";
