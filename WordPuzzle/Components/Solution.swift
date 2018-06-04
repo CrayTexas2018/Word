@@ -43,13 +43,17 @@ public class SolutionRepo
     {
         let s1 = getSolution(solution_id: 1)
         let s2 = getSolution(solution_id: 2)
+        let s3 = getSolution(solution_id: 2)
+        let s4 = getSolution(solution_id: 2)
+        let s5 = getSolution(solution_id: 2)
+        let s6 = getSolution(solution_id: 2)
         
-        return [s1, s2]
+        return [s1, s2, s3, s4, s5, s6]
     }
     
     public func getSolution(solution_id: Int) -> Solution
     {
-        let s = Solution(solution_id: solution_id, solution_text: "Solution Text", solution_hint: "Solution Hint")
+        let s = Solution(solution_id: solution_id, solution_text: "computer", solution_hint: "Solution Hint")
         
         return s
     }

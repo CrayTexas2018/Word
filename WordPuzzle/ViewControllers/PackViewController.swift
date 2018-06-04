@@ -14,7 +14,9 @@ class PackViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let s = "hello"
+        let s2 = Array(s)
+        print(s2)
         // Do any additional setup after loading the view.
     }
 
