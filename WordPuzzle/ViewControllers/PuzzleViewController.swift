@@ -8,7 +8,9 @@
 import UIKit
 
 class PuzzleViewController: UIViewController {
-        
+    
+    var puzzle_id : Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

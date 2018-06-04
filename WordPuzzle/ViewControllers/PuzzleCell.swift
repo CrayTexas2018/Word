@@ -13,22 +13,4 @@ class PuzzleCell: UITableViewCell {
     @IBOutlet weak var PuzzleNameLabel: UILabel!
     @IBOutlet weak var PuzzleDifficultyLabel: UILabel!
     @IBOutlet weak var PuzzlePlayButton: UIButton!
-    
-    var puzzleId : Int? = nil
-    
-    @IBAction func PuzzlePlayButtonPressed(_ sender: Any) {
-        print("Button Pressed. Puzzle ID = ", puzzleId)
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

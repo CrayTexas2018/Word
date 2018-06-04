@@ -23,14 +23,16 @@ class PuzzleSelectViewController: UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "PuzzleCell") as! PuzzleCell
         cell.PuzzleNameLabel.text = puzzleList[indexPath.row]
         cell.PuzzleDifficultyLabel.text = "Easy"
-        cell.puzzleId = (indexPath.row + 1);
+        cell.PuzzlePlayButton.tag = indexPath.row
         cell.PuzzlePlayButton.addTarget(self, action: #selector(self.beginPuzzle), for: .touchUpInside)
         
         return cell
     }
     
-    @objc private func beginPuzzle()
+    @objc func beginPuzzle(sender:UIButton)
     {
+        print(sender.tag)
+        
         // When the cell button is hit, navigate to new page
         let vc = storyboard?.instantiateViewController(withIdentifier: "Play_Puzzle") as? PuzzleViewController
         navigationController?.pushViewController(vc!, animated: true)
@@ -42,9 +44,8 @@ class PuzzleSelectViewController: UIViewController, UITableViewDelegate, UITable
         // Load puzzles from DB where pack_id = pack_id
         puzzleList = PuzzleRepo.getPuzzleNames(pack_id: pack_id!)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 }
+
+
+
+
