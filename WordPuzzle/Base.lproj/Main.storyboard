@@ -65,17 +65,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fsM-ZS-j4B">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fsM-ZS-j4B">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="W2o-rD-7Fs">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PuzzleCell" rowHeight="200" id="ZXm-fX-zTT" customClass="PuzzleCell" customModule="WordPuzzle" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W2o-rD-7Fs" id="Mfg-MZ-hWu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZXm-fX-zTT" id="zzL-Iv-c8M">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZCQ-Wt-3DK">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Puzzle Name Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97N-JQ-fJj">
+                                                            <rect key="frame" x="8" y="0.0" width="198" height="30"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Difficulty Here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1G-R7-0Ig">
+                                                            <rect key="frame" x="8" y="38" width="98.5" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJ8-qC-wET">
+                                                            <rect key="frame" x="319" y="78.5" width="46" height="42"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                            <state key="normal" title="Play"/>
+                                                            <connections>
+                                                                <action selector="PuzzlePlayButtonPressed:" destination="ZXm-fX-zTT" eventType="touchUpInside" id="1Ai-Xd-JB1"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="97N-JQ-fJj" firstAttribute="top" secondItem="ZCQ-Wt-3DK" secondAttribute="top" id="48D-Ne-xTM"/>
+                                                        <constraint firstItem="m1G-R7-0Ig" firstAttribute="leading" secondItem="ZCQ-Wt-3DK" secondAttribute="leading" constant="8" id="CPR-BT-grb"/>
+                                                        <constraint firstItem="m1G-R7-0Ig" firstAttribute="top" secondItem="97N-JQ-fJj" secondAttribute="bottom" constant="8" id="Fkh-4F-Vb9"/>
+                                                        <constraint firstItem="XJ8-qC-wET" firstAttribute="centerY" secondItem="ZCQ-Wt-3DK" secondAttribute="centerY" id="bKX-Eb-2V6"/>
+                                                        <constraint firstAttribute="trailing" secondItem="XJ8-qC-wET" secondAttribute="trailing" constant="10" id="fJN-oG-K86"/>
+                                                        <constraint firstItem="97N-JQ-fJj" firstAttribute="leading" secondItem="ZCQ-Wt-3DK" secondAttribute="leading" constant="8" id="wEX-v5-JyX"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ZCQ-Wt-3DK" firstAttribute="top" secondItem="zzL-Iv-c8M" secondAttribute="top" id="5qO-Dv-Jyc"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZCQ-Wt-3DK" secondAttribute="trailing" id="IB5-kL-f1C"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZCQ-Wt-3DK" secondAttribute="bottom" id="RvB-Sz-keN"/>
+                                                <constraint firstItem="ZCQ-Wt-3DK" firstAttribute="leading" secondItem="zzL-Iv-c8M" secondAttribute="leading" id="aOD-Nt-PaK"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="PuzzleDifficultyLabel" destination="m1G-R7-0Ig" id="nPJ-us-L8m"/>
+                                            <outlet property="PuzzleNameLabel" destination="97N-JQ-fJj" id="d3a-E9-Tr1"/>
+                                            <outlet property="PuzzlePlayButton" destination="XJ8-qC-wET" id="xQy-3B-3Y4"/>
+                                            <outlet property="PuzzleView" destination="ZCQ-Wt-3DK" id="QS8-D0-Fxk"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
