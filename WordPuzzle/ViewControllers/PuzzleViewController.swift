@@ -20,100 +20,56 @@ class PuzzleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Set width of text area
-        //setTextFieldWidth()
         // Load Puzzle
-        puzzle = loadPuzzle(puzzleId: puzzleId)
+        puzzle = PuzzleRepo.getPuzzle(puzzle_id: puzzleId)
         // Load Tiles
-        puzzle.tiles = loadTiles(solutions: puzzle.solutions)
+        puzzle.tiles = TileUtility.loadTiles(solutions: puzzle.solutions)
         // Draw Tiles
         drawTiles(tiles: puzzle.tiles)
     }
     
-    private func loadPuzzle(puzzleId: Int) -> Puzzle
-    {
-        let puzzleRepo = PuzzleRepo()
-        return puzzleRepo.getPuzzle(puzzle_id: puzzleId)
-    }
-    
-    private func loadTiles(solutions: [Solution]) -> [Tile]
-    {
-        var tileList : [Tile] = []
-        var tileId = 1
-        for solution in solutions {
-            // Take solution and substring a random 1-3 letter until there are no more letters
-            var s = Array(solution.getSolutionText(solution: solution))
-            while s.count > 0
-            {
-                var text: String = ""
-                let n = Int(arc4random_uniform(3)) + 1
-                if (n > s.count)
-                {
-                    text += s
-                    s.removeAll()
-                }
-                else
-                {
-                    for _ in 1...n
-                    {
-                        text += String(s[0])
-                        s.remove(at: 0)
-                    }
-                }
-                tileList.append(Tile(tile_id: tileId, tile_text: text, is_selectable: true))
-                tileId += 1
-            }
-        }
-        return tileList
-    }
-    
     private func drawTiles(tiles: [Tile])
     {
-        // Always have 4 rows, this determines columns
-        let rows : CGFloat = 5
-        let columns : CGFloat = ceil(CGFloat(tiles.count) / CGFloat(rows))
-        let tileWidth : CGFloat = ((self.view.frame.size.width - 20) / columns)
-        let tileHeight : CGFloat = 50
+        // Always have 5 rows, this determines columns
+        let tileDimensions = TileUtility.getTileDimensions(rows: 5, tileHeight: 50, tileCount: CGFloat(tiles.count), view: self.view)
         
+        // original x
         var currentX: CGFloat = 7.5
-        var currentY: CGFloat = self.view.frame.size.height - (tileHeight * rows) - 7.5 - 22.5
-        
-        print(columns, tileWidth, tileHeight, tiles.count)
-        
-        var i: Int = 0
+        // original y
+        var currentY: CGFloat = self.view.frame.size.height - (tileDimensions["tileHeight"]! * tileDimensions["rows"]!) - tileDimensions["spacing"]!  - tileDimensions["padding"]!
+        var multiplier: Int = 0
         var firstRow = true
-        for tile in tiles {
-            if (i % Int(columns) == 0 && !firstRow)
+        for tile in tiles
+        {
+            // Make a new row
+            if (multiplier % Int(tileDimensions["columns"]!) == 0 && !firstRow)
             {
-                i = 0
+                multiplier = 0
                 currentX = 7.5
-                currentY += 5 + tileHeight
+                currentY += 5 + tileDimensions["tileHeight"]!
             }
             firstRow = false
-            
+            // Create button to host tile info
             let button = UIButton(type: UIButtonType.system) as UIButton
-            
-            let xPostion:CGFloat = currentX + (CGFloat(i) * tileWidth)
-            let yPostion:CGFloat = currentY
-            let buttonWidth:CGFloat = tileWidth
-            let buttonHeight:CGFloat = tileHeight
-            
-            button.frame = CGRect(x:xPostion, y:yPostion, width:buttonWidth, height:buttonHeight)
-            
+            // Get button coordinates
+            let coordinates = TileUtility.getTileCoordinates(currentX: currentX, currentY: currentY, multiplier: CGFloat(multiplier), tileWidth: tileDimensions["tileWidth"]!, tileHeight: tileDimensions["tileHeight"]!)
+            // Set button coordinates
+            button.frame = CGRect(x: coordinates["xPos"]!, y: coordinates["yPos"]!, width: coordinates["buttonWidth"]!, height: coordinates["buttonHeight"]!)
+            // Style button
             button.backgroundColor = UIColor.lightGray
             button.setTitle(tile.getTileText(tile: tile), for: UIControlState.normal)
             button.tintColor = UIColor.black
             button.tag = tile.getTileId(tile: tile)
-            button.addTarget(self, action: #selector(PuzzleViewController.buttonAction(_:)), for: .touchUpInside)
-            
+            button.addTarget(self, action: #selector(PuzzleViewController.tileButtonPressed(_:)), for: .touchUpInside)
+            // Add Button to view
             self.view.addSubview(button)
-            
-            currentX += CGFloat(5) / columns
-            i += 1
+            // Adjust coordinates
+            currentX += tileDimensions["spacing"]! / tileDimensions["columns"]!
+            multiplier += 1
         }
     }
     
-    @objc func buttonAction(_ sender:UIButton!)
+    @objc func tileButtonPressed(_ sender:UIButton!)
     {
         let currentText: String! = textArea.text
         let buttonText: String! = sender.currentTitle
@@ -127,10 +83,8 @@ class PuzzleViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func submitButtonPressed(_ sender: UIButton) {
-        //var puzzle = loadPuzzle(puzzleId: puzzleId)
         // See if text area text = solution
         let userText = textArea.text
-        
         var i = 0
         for solution in puzzle.solutions {
             if (userText == solution.getSolutionText(solution: solution))
@@ -150,16 +104,16 @@ class PuzzleViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             i += 1
         }
-        
         hintTable.reloadData()
-        
     }
     
+    // hint tableview number of rows
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return puzzle.solutions.count
     }
     
+    // Create cells for hint tableview
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SolutionCell") as! SolutionCell
@@ -180,6 +134,7 @@ class PuzzleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
+    // Player presses release button
     @objc func releaseSolution(sender:UIButton)
     {
         releaseTiles(puzzle: puzzle, tileSequence: puzzle.solutions[sender.tag - 101].tile_sequence)
@@ -189,9 +144,13 @@ class PuzzleViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("Button Pressed")
     }
     
+    /*
+     If player wants to unsolve solution, in order to re-enable used tiles
+    */
     private func releaseTiles(puzzle: Puzzle, tileSequence: [Int])
     {
-        for tile in puzzle.tiles {
+        for tile in puzzle.tiles
+        {
             if tileSequence.contains(tile.getTileId(tile: tile))
             {
                 if let button = self.view.viewWithTag(tile.getTileId(tile: tile)) as? UIButton

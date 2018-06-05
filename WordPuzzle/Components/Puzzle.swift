@@ -13,16 +13,19 @@ public struct Puzzle
     let puzzle_id: Int
     let puzzle_name: String
     var solutions: [Solution]
-    var tiles: [Tile]
     let content_id: Int
+    var tiles: [Tile]
+    var puzzleSolved: Bool
     
-    init(puzzle_id: Int, puzzle_name: String, solutions: [Solution], tiles: [Tile], content_id: Int = 1)
+    
+    init(puzzle_id: Int, puzzle_name: String, solutions: [Solution], tiles: [Tile], content_id: Int = 1, puzzleSolved: Bool = false)
     {
         self.puzzle_id = puzzle_id
         self.puzzle_name = puzzle_name
         self.solutions = solutions
         self.tiles = tiles
         self.content_id = content_id
+        self.puzzleSolved = puzzleSolved
     }
     
     public func getPuzzleId(puzzle: Puzzle) -> Int
@@ -55,7 +58,7 @@ public class PuzzleRepo
         return ["Puzzle 1", "Puzzle 2", "Puzzle 3", "Puzzle 4", "Puzzle 5"]
     }
     
-    public func getPuzzle(puzzle_id: Int) -> Puzzle
+    public static func getPuzzle(puzzle_id: Int) -> Puzzle
     {
         // Make DB call
         let puzzle_name = "Puzzle Name"

@@ -23,6 +23,8 @@
 		AB4AB79020C3C69A0023B63C /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AB78F20C3C69A0023B63C /* Tile.swift */; };
 		AB4AB79220C3C7060023B63C /* Solution.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AB79120C3C7060023B63C /* Solution.swift */; };
 		AB4AB79B20C3E2B90023B63C /* WebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4AB79920C3E2B90023B63C /* WebRequest.swift */; };
+		AB8985FD20C5E9540036434B /* TileUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8985FC20C5E9540036434B /* TileUtility.swift */; };
+		AB8985FF20C5F2F50036434B /* PuzzleUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB8985FE20C5F2F50036434B /* PuzzleUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 		AB4AB78F20C3C69A0023B63C /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		AB4AB79120C3C7060023B63C /* Solution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Solution.swift; sourceTree = "<group>"; };
 		AB4AB79920C3E2B90023B63C /* WebRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRequest.swift; sourceTree = "<group>"; };
+		AB8985FC20C5E9540036434B /* TileUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileUtility.swift; sourceTree = "<group>"; };
+		AB8985FE20C5F2F50036434B /* PuzzleUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuzzleUtility.swift; sourceTree = "<group>"; };
 		E2BB006CCF6B3E34747402D6 /* Pods-WordPuzzleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordPuzzleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WordPuzzleUITests/Pods-WordPuzzleUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +138,8 @@
 		AB225A9320C5E2EE0009F411 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				AB8985FC20C5E9540036434B /* TileUtility.swift */,
+				AB8985FE20C5F2F50036434B /* PuzzleUtility.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -401,12 +407,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB225A8B20C4A0FC0009F411 /* PuzzleSelectViewController.swift in Sources */,
+				AB8985FD20C5E9540036434B /* TileUtility.swift in Sources */,
 				AB4AB79B20C3E2B90023B63C /* WebRequest.swift in Sources */,
 				AB225A8D20C4A5430009F411 /* PackViewController.swift in Sources */,
 				AB225A9020C4B7990009F411 /* PuzzleCell.swift in Sources */,
 				AB4AB79220C3C7060023B63C /* Solution.swift in Sources */,
 				AB225A8820C49DA00009F411 /* PuzzleViewController.swift in Sources */,
 				AB225A9220C51C210009F411 /* SolutionCell.swift in Sources */,
+				AB8985FF20C5F2F50036434B /* PuzzleUtility.swift in Sources */,
 				AB4AB78E20C39D840023B63C /* Puzzle.swift in Sources */,
 				AB4AB75C20C39BF30023B63C /* AppDelegate.swift in Sources */,
 				AB4AB79020C3C69A0023B63C /* Tile.swift in Sources */,
